@@ -1,0 +1,45 @@
+{
+  "name": "xeno-backend",
+  "version": "1.0.0",
+  "main": "fixed-neon-backend.js",
+  "scripts": {
+    "dev": "node -r ./lib/database.js node_modules/nodemon/bin/nodemon.js src/server.js",
+    "start": "node production-backend.js",
+    "sync": "node -r ./lib/database.js run-sync.js",
+    "sync:incremental": "node -r ./lib/database.js test-incremental.js basic",
+    "sync:scheduled": "node -r ./lib/database.js test-incremental.js scheduled",
+    "scheduler": "node -r ./lib/database.js cron-scheduler.js",
+    "test-shopify": "node -r ./lib/database.js test-shopify.js",
+    "test-webhooks": "node -r ./lib/database.js test-webhook.js",
+    "test-incremental": "node -r ./lib/database.js test-incremental.js",
+    "test-metrics": "node -r ./lib/database.js test-metrics.js",
+    "views:create": "node -r ./lib/database.js manage-views.js create",
+    "views:drop": "node -r ./lib/database.js manage-views.js drop",
+    "views:refresh": "node -r ./lib/database.js manage-views.js refresh",
+    "views:list": "node -r ./lib/database.js manage-views.js list",
+    "views:test": "node -r ./lib/database.js manage-views.js test",
+    "register-webhooks": "node -r ./lib/database.js register-webhooks.js",
+    "db:generate": "node -r ./lib/database.js node_modules/prisma/build/index.js generate",
+    "db:migrate": "node -r ./lib/database.js node_modules/prisma/build/index.js migrate dev",
+    "db:push": "node -r ./lib/database.js node_modules/prisma/build/index.js db push",
+    "db:studio": "node -r ./lib/database.js node_modules/prisma/build/index.js studio",
+    "prisma": "node -r ./lib/database.js node_modules/prisma/build/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Shopify data sync backend with Prisma and Neon",
+  "dependencies": {
+    "@prisma/client": "^6.15.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "prisma": "^6.15.0"
+  }
+}

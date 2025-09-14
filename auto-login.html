@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Login - Multi-Tenant Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 500px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover { background: #0056b3; }
+        .credentials {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🚀 Multi-Tenant Dashboard</div>
+        
+        <div id="status" class="status info">
+            🔍 Checking services...
+        </div>
+        
+        <div class="credentials">
+            <strong>Auto-Fill Credentials:</strong><br>
+            Email: admin@xeno.com<br>
+            Password: admin123
+        </div>
+        
+        <div id="actions" style="display: none;">
+            <a href="http://localhost:3000" class="btn" target="_blank">
+                🌐 Open Dashboard
+            </a>
+            <button onclick="autoFillCredentials()" class="btn">
+                🔑 Auto-Fill Login
+            </button>
+        </div>
+        
+        <div id="instructions" style="display: none;">
+            <h3>📋 Instructions:</h3>
+            <ol style="text-align: left;">
+                <li>Click "Open Dashboard" above</li>
+                <li>Click "Auto-Fill Login" to fill credentials</li>
+                <li>Click the Login button</li>
+                <li>Look for "Select Store" dropdown after login</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        let checkCount = 0;
+        const maxChecks = 20;
+        
+        function checkServices() {
+            checkCount++;
+            
+            // Check backend
+            fetch('http://localhost:4000/health')
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('status').innerHTML = '✅ Backend is running!';
+                        document.getElementById('status').className = 'status success';
+                        document.getElementById('actions').style.display = 'block';
+                        document.getElementById('instructions').style.display = 'block';
+                        return;
+                    }
+                })
+                .catch(error => {
+                    if (checkCount < maxChecks) {
+                        document.getElementById('status').innerHTML = `🔍 Checking services... (${checkCount}/${maxChecks})`;
+                        setTimeout(checkServices, 2000);
+                    } else {
+                        document.getElementById('status').innerHTML = '❌ Backend is not running. Please start services first.';
+                        document.getElementById('status').className = 'status error';
+                    }
+                });
+        }
+        
+        function autoFillCredentials() {
+            // Open the dashboard in a new tab
+            const dashboardWindow = window.open('http://localhost:3000', '_blank');
+            
+            // Wait a moment for the page to load, then try to fill credentials
+            setTimeout(() => {
+                try {
+                    // This would work if the dashboard is on the same domain
+                    // For now, we'll just show instructions
+                    alert('Dashboard opened! Please manually enter:\n\nEmail: admin@xeno.com\nPassword: admin123');
+                } catch (error) {
+                    console.log('Cannot auto-fill due to cross-origin restrictions');
+                }
+            }, 2000);
+        }
+        
+        // Start checking services
+        checkServices();
+    </script>
+</body>
+</html>

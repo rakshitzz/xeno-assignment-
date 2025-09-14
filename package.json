@@ -1,0 +1,29 @@
+{
+  "name": "fxeno",
+  "version": "1.0.0",
+  "description": "Prisma project with Neon dual URL configuration",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node -r ./lib/database.js index.js",
+    "db:migrate": "node -r ./lib/database.js node_modules/prisma/build/index.js migrate dev",
+    "db:generate": "node -r ./lib/database.js node_modules/prisma/build/index.js generate",
+    "db:push": "node -r ./lib/database.js node_modules/prisma/build/index.js db push",
+    "db:studio": "node -r ./lib/database.js node_modules/prisma/build/index.js studio",
+    "db:reset": "node -r ./lib/database.js node_modules/prisma/build/index.js migrate reset",
+    "prisma": "node -r ./lib/database.js node_modules/prisma/build/index.js"
+  },
+  "keywords": [
+    "prisma",
+    "neon",
+    "postgresql"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.4.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "prisma": "^5.4.2"
+  }
+}
