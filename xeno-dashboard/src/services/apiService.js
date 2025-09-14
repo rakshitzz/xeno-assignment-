@@ -1,5 +1,5 @@
 // API service for fetching dashboard data
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+const API_URL = process.env.API_URL || 'http://localhost:4000';
 
 export const apiService = {
   async login(email, password) {

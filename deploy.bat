@@ -48,7 +48,7 @@ echo [INFO]    - Set environment variables (see DEPLOYMENT_GUIDE.md)
 echo [INFO] 3. Deploy frontend to Vercel:
 echo [INFO]    - Go to https://vercel.com
 echo [INFO]    - Connect your GitHub repo
-echo [INFO]    - Set REACT_APP_API_URL environment variable
+echo [INFO]    - Set API_URL environment variable
 echo.
 echo [INFO] 📖 See DEPLOYMENT_GUIDE.md for detailed instructions
 echo.
