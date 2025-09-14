@@ -1,10 +1,10 @@
 // Authentication service for the dashboard
-const API_URL = process.env.API_URL || 'http://localhost:4000';
+const REACT_APP_API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
 
 export const authService = {
   async login(email, password) {
     try {
-      const response = await fetch(`${API_URL}/auth/login`, {
+      const response = await fetch(`${REACT_APP_API_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ export const authService = {
 
   async getMe(token) {
     try {
-      const response = await fetch(`${API_URL}/auth/me`, {
+      const response = await fetch(`${REACT_APP_API_URL}/auth/me`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

@@ -1,9 +1,9 @@
 // API service for fetching dashboard data
-const API_URL = process.env.API_URL || 'http://localhost:4000';
+const REACT_APP_API_URL = process.env.REACT_APP_REACT_APP_API_URL || 'http://localhost:4000';
 
 export const apiService = {
   async login(email, password) {
-    const response = await fetch(`${API_URL}/api/auth/login`, {
+    const response = await fetch(`${REACT_APP_API_URL}/api/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -17,7 +17,7 @@ export const apiService = {
   },
 
   async fetchMetrics(token, tenantId) {
-    const response = await fetch(`${API_URL}/api/metrics?tenantId=${tenantId}`, {
+    const response = await fetch(`${REACT_APP_API_URL}/api/metrics?tenantId=${tenantId}`, {
       headers: { 
         'Authorization': `Bearer ${token}`,
         'X-Tenant-ID': tenantId
@@ -32,7 +32,7 @@ export const apiService = {
   },
 
   async fetchTenants(token) {
-    const response = await fetch(`${API_URL}/api/tenants`, {
+    const response = await fetch(`${REACT_APP_API_URL}/api/tenants`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     
@@ -44,7 +44,7 @@ export const apiService = {
   },
 
   async syncData(token, entity, tenantId) {
-    const response = await fetch(`${API_URL}/api/sync/${entity}`, {
+    const response = await fetch(`${REACT_APP_API_URL}/api/sync/${entity}`, {
       method: 'POST',
       headers: { 
         'Authorization': `Bearer ${token}`,
@@ -61,7 +61,7 @@ export const apiService = {
   },
 
   async fetchTrends(token, tenantId) {
-    const response = await fetch(`${API_URL}/metrics/trends?tenantId=${tenantId}`, {
+    const response = await fetch(`${REACT_APP_API_URL}/metrics/trends?tenantId=${tenantId}`, {
       headers: { 
         'Authorization': `Bearer ${token}`,
         'X-Tenant-ID': tenantId
@@ -76,7 +76,7 @@ export const apiService = {
   },
 
   async fetchTopCustomers(token, tenantId) {
-    const response = await fetch(`${API_URL}/api/top-customers?tenantId=${tenantId}`, {
+    const response = await fetch(`${REACT_APP_API_URL}/api/top-customers?tenantId=${tenantId}`, {
       headers: { 
         'Authorization': `Bearer ${token}`,
         'X-Tenant-ID': tenantId

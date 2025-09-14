@@ -72,7 +72,7 @@ print_status "   - Set environment variables (see DEPLOYMENT_GUIDE.md)"
 print_status "3. Deploy frontend to Vercel:"
 print_status "   - Go to https://vercel.com"
 print_status "   - Connect your GitHub repo"
-print_status "   - Set API_URL environment variable"
+print_status "   - Set REACT_APP_API_URL environment variable"
 print_status ""
 print_status "📖 See DEPLOYMENT_GUIDE.md for detailed instructions"
 
