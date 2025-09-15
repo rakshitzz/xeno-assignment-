@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: xeno-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FASHION_STORE_SHOP_DOMAIN
+        value: rakshit-xeno-test.myshopify.com
+      - key: FASHION_STORE_ACCESS_TOKEN
+        value: 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
+      - key: FASHION_STORE_TENANT_ID
+        value: fashion-store
+      - key: BOOKS_STORE_SHOP_DOMAIN
+        value: book-store-xeno.myshopify.com
+      - key: BOOKS_STORE_ACCESS_TOKEN
+        value: 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
+      - key: BOOKS_STORE_TENANT_ID
+        value: books-store

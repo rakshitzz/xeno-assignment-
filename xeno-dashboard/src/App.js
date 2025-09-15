@@ -357,8 +357,8 @@ function DashboardContent() {
                 <div className="rfm-thresholds">
                   <h3>RFM Thresholds</h3>
                   <div className="thresholds-info">
-                    <span>Median Orders: {metrics.rfmThresholds.medianOrders}</span>
-                    <span>Median AOV: ${metrics.rfmThresholds.medianAOV.toFixed(2)}</span>
+                    <span>High Frequency: {metrics.rfmThresholds.highFrequencyThreshold || 0} orders</span>
+                    <span>High AOV: ${(metrics.rfmThresholds.highAOVThreshold || 0).toFixed(2)}</span>
                   </div>
                 </div>
               )}
