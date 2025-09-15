@@ -28,10 +28,10 @@ cp env.example .env
 Edit the `.env` file and replace the placeholder values:
 
 ```bash
-# Your actual tokens (replace these)
-FASHION_STORE_ACCESS_TOKEN=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
-BOOKS_STORE_ACCESS_TOKEN=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
-ELECTRONICS_STORE_ACCESS_TOKEN=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
+# Your actual tokens (replace these with your real tokens)
+FASHION_STORE_ACCESS_TOKEN=your_fashion_store_token_here
+BOOKS_STORE_ACCESS_TOKEN=your_books_store_token_here
+ELECTRONICS_STORE_ACCESS_TOKEN=your_electronics_store_token_here
 ```
 
 ### 3. Commit and Push Your Changes
