@@ -1,0 +1,15 @@
+{
+  "database": {
+    "pooler": {
+      "url": "postgresql://neondb_owner:npg_FZ1cvYXViLW3@ep-orange-meadow-adggt5of-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&pgbouncer=true&connect_timeout=10&pool_timeout=15",
+      "description": "Runtime connection through PgBouncer pooler for scalability"
+    },
+    "direct": {
+      "url": "postgresql://neondb_owner:npg_FZ1cvYXViLW3@ep-orange-meadow-adggt5of.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=10",
+      "description": "Direct connection for migrations (no pooler)"
+    },
+    "prisma": {
+      "clientEngineType": "library"
+    }
+  }
+}
