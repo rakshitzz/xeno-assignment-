@@ -18,12 +18,18 @@ services:
       - key: FASHION_STORE_SHOP_DOMAIN
         value: rakshit-xeno-test.myshopify.com
       - key: FASHION_STORE_ACCESS_TOKEN
-        value: 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
+        value: your_fashion_store_token_here
       - key: FASHION_STORE_TENANT_ID
         value: fashion-store
       - key: BOOKS_STORE_SHOP_DOMAIN
         value: book-store-xeno.myshopify.com
       - key: BOOKS_STORE_ACCESS_TOKEN
-        value: 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
+        value: your_books_store_token_here
       - key: BOOKS_STORE_TENANT_ID
         value: books-store
+      - key: ELECTRONICS_STORE_SHOP_DOMAIN
+        value: electronics-store-xeno.myshopify.com
+      - key: ELECTRONICS_STORE_ACCESS_TOKEN
+        value: your_electronics_store_token_here
+      - key: ELECTRONICS_STORE_TENANT_ID
+        value: electronics-store

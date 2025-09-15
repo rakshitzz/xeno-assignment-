@@ -21,30 +21,53 @@ process.env.DATABASE_URL = databaseConfig.database.pooler.url;
 process.env.DIRECT_URL = databaseConfig.database.direct.url;
 process.env.PRISMA_CLIENT_ENGINE_TYPE = databaseConfig.database.prisma.clientEngineType;
 
-// Shopify API configuration - REAL STORE DETAILS WITH NEW TOKENS
+// Shopify API configuration - Using environment variables for security
 const SHOPIFY_CONFIG = {
   'books-store': {
-    domain: 'book-store-xeno.myshopify.com',
-    accessToken: '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',
+    domain: process.env.BOOKS_STORE_SHOP_DOMAIN || 'book-store-xeno.myshopify.com',
+    accessToken: process.env.BOOKS_STORE_ACCESS_TOKEN || '',
     apiVersion: '2023-10'
   },
   'electronics-store': {
-    domain: 'electronics-store-xeno.myshopify.com',
-    accessToken: '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',
+    domain: process.env.ELECTRONICS_STORE_SHOP_DOMAIN || 'electronics-store-xeno.myshopify.com',
+    accessToken: process.env.ELECTRONICS_STORE_ACCESS_TOKEN || '',
     apiVersion: '2023-10'
   },
   'fashion-store': {
-    domain: 'rakshit-xeno-test.myshopify.com',
-    accessToken: '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',
+    domain: process.env.FASHION_STORE_SHOP_DOMAIN || 'rakshit-xeno-test.myshopify.com',
+    accessToken: process.env.FASHION_STORE_ACCESS_TOKEN || '',
     apiVersion: '2023-10'
   }
 };
+
+// Validate that all required environment variables are set
+function validateEnvironmentVariables() {
+  const requiredVars = [
+    'BOOKS_STORE_ACCESS_TOKEN',
+    'ELECTRONICS_STORE_ACCESS_TOKEN', 
+    'FASHION_STORE_ACCESS_TOKEN'
+  ];
+  
+  const missing = requiredVars.filter(varName => !process.env[varName]);
+  
+  if (missing.length > 0) {
+    console.warn(`⚠️  Warning: Missing environment variables: ${missing.join(', ')}`);
+    console.warn('⚠️  Some Shopify stores may not work properly without these tokens.');
+  }
+}
+
+// Validate environment variables on startup
+validateEnvironmentVariables();
 
 // Helper function to make Shopify API calls
 async function shopifyRequest(storeId, endpoint, options = {}) {
   const config = SHOPIFY_CONFIG[storeId];
   if (!config) {
     throw new Error(`Store ${storeId} not found`);
+  }
+
+  if (!config.accessToken) {
+    throw new Error(`Access token not configured for store ${storeId}. Please set the environment variable.`);
   }
 
   const url = `https://${config.domain}/admin/api/${config.apiVersion}/${endpoint}`;

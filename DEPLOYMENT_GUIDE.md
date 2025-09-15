@@ -40,13 +40,18 @@ JWT_SECRET=your-super-secret-jwt-key-here
 
 # Shopify Store 1 (Fashion Store)
 FASHION_STORE_SHOP_DOMAIN=rakshit-xeno-test.myshopify.com
-FASHION_STORE_ACCESS_TOKEN=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
+FASHION_STORE_ACCESS_TOKEN=your_fashion_store_token_here
 FASHION_STORE_TENANT_ID=fashion-store
 
 # Shopify Store 2 (Books Store)
 BOOKS_STORE_SHOP_DOMAIN=book-store-xeno.myshopify.com
-BOOKS_STORE_ACCESS_TOKEN=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
+BOOKS_STORE_ACCESS_TOKEN=your_books_store_token_here
 BOOKS_STORE_TENANT_ID=books-store
+
+# Shopify Store 3 (Electronics Store)
+ELECTRONICS_STORE_SHOP_DOMAIN=electronics-store-xeno.myshopify.com
+ELECTRONICS_STORE_ACCESS_TOKEN=your_electronics_store_token_here
+ELECTRONICS_STORE_TENANT_ID=electronics-store
 ```
 
 #### Step 4: Deploy

@@ -57,9 +57,11 @@ echo [INFO]    - NODE_ENV: production
 echo [INFO]    - PORT: 10000
 echo [INFO]    - JWT_SECRET: (generate a strong secret)
 echo [INFO]    - FASHION_STORE_SHOP_DOMAIN: rakshit-xeno-test.myshopify.com
-echo [INFO]    - FASHION_STORE_ACCESS_TOKEN: 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
+echo [INFO]    - FASHION_STORE_ACCESS_TOKEN: your_fashion_store_token_here
 echo [INFO]    - BOOKS_STORE_SHOP_DOMAIN: book-store-xeno.myshopify.com
-echo [INFO]    - BOOKS_STORE_ACCESS_TOKEN: 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
+echo [INFO]    - BOOKS_STORE_ACCESS_TOKEN: your_books_store_token_here
+echo [INFO]    - ELECTRONICS_STORE_SHOP_DOMAIN: electronics-store-xeno.myshopify.com
+echo [INFO]    - ELECTRONICS_STORE_ACCESS_TOKEN: your_electronics_store_token_here
 echo [INFO] 8. Click 'Create Web Service'
 echo.
 echo [STEP] 🎨 VERCEL DEPLOYMENT (Frontend)
