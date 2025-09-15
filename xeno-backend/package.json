@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "fixed-neon-backend.js",
   "scripts": {
+    "build": "prisma generate",
     "dev": "node -r ./lib/database.js node_modules/nodemon/bin/nodemon.js src/server.js",
-    "start": "node production-backend.js",
+    "start": "node server.js",
     "sync": "node -r ./lib/database.js run-sync.js",
     "sync:incremental": "node -r ./lib/database.js test-incremental.js basic",
     "sync:scheduled": "node -r ./lib/database.js test-incremental.js scheduled",
